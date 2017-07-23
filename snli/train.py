@@ -30,11 +30,11 @@ def train(args):
     train_loader = DataLoader(dataset=train_dataset, batch_size=args.batch_size,
                               shuffle=True, num_workers=2,
                               collate_fn=train_dataset.collate,
-                              pin_memory=True)
+                              pin_memory=args.gpu > -1)
     valid_loader = DataLoader(dataset=valid_dataset, batch_size=args.batch_size,
                               shuffle=False, num_workers=2,
                               collate_fn=valid_dataset.collate,
-                              pin_memory=True)
+                              pin_memory=args.gpu > -1)
     word_vocab = train_dataset.word_vocab
     label_vocab = train_dataset.label_vocab
 
